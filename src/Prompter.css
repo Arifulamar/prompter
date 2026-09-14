@@ -1,0 +1,389 @@
+:root {
+  --bg: #050505;
+  --panel: #0c0c0c;
+  --panel-2: #141414;
+  --text: #f5f5f5;
+  --muted: #858585;
+  --line: #292929;
+  --accent: #f0c94d;
+  --section: #72d8ff;
+  --active: #1b1b1b;
+  --danger: #ff4961;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+.home {
+  width: min(760px, 100%);
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 42px 24px 20px;
+}
+
+.home-head {
+  flex-shrink: 0;
+  margin-bottom: 26px;
+}
+
+.home-head h1 {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 46px);
+  letter-spacing: -0.03em;
+}
+
+.home-head p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.song-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 30px;
+  scrollbar-width: none;
+}
+
+.song-list::-webkit-scrollbar {
+  display: none;
+}
+
+.song-card {
+  width: 100%;
+  min-height: 82px;
+  margin: 0 0 10px;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.song-card:hover {
+  background: var(--panel-2);
+}
+
+.song-card.selected {
+  border-color: var(--accent);
+  background: var(--active);
+}
+
+.song-number {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.song-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.song-info strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: clamp(17px, 3vw, 22px);
+}
+
+.song-info small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.pedal-hint {
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding-top: 12px;
+  color: #666;
+  font-size: 10px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.song-view {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.song-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  height: 72px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(5, 5, 5, 0.96);
+}
+
+.home-button,
+.full-button,
+.transpose button {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.home-button {
+  height: 44px;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.song-heading {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.song-heading strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+.song-heading small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.transpose {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.transpose button {
+  width: 42px;
+  height: 44px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.key-box {
+  min-width: 58px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+
+.key-box small {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.key-box strong {
+  color: var(--accent);
+  font-family: "Courier New", monospace;
+  font-size: 18px;
+}
+
+.full-button {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+.lyrics {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: calc(72px + 34vh) clamp(24px, 8vw, 150px) 52vh;
+  scrollbar-width: none;
+}
+
+.lyrics::-webkit-scrollbar {
+  display: none;
+}
+
+.lyrics.fullscreen {
+  padding: 42vh clamp(28px, 9vw, 170px) 52vh;
+}
+
+.lyrics-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  font-family: "Courier New", Consolas, "Liberation Mono", monospace;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.44;
+  font-weight: 700;
+  text-align: left;
+}
+
+.chord {
+  color: var(--accent);
+  white-space: pre-wrap;
+  font-weight: 900;
+}
+
+.lyric {
+  color: var(--text);
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.section {
+  margin-top: 1.5em;
+  margin-bottom: 0.7em;
+  color: var(--section);
+  font-size: 0.64em;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.blank {
+  min-height: 0.8em;
+}
+
+.reading-line {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  right: 12px;
+  z-index: 10;
+  height: 2px;
+  pointer-events: none;
+}
+
+.reading-line::before,
+.reading-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 38px;
+  height: 3px;
+  border-radius: 4px;
+  background: var(--danger);
+}
+
+.reading-line::before {
+  left: 0;
+}
+
+.reading-line::after {
+  right: 0;
+}
+
+.song-status {
+  position: absolute;
+  top: 82px;
+  right: 16px;
+  z-index: 12;
+  display: flex;
+  gap: 10px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #737373;
+  font-size: 9px;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+.song-pedal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 16;
+  padding: 10px 18px 12px;
+  background: linear-gradient(to top, rgba(5, 5, 5, 0.98), rgba(5, 5, 5, 0.84));
+}
+
+@media (max-width: 720px) {
+  .home {
+    padding: 28px 14px 14px;
+  }
+
+  .song-topbar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    height: auto;
+    min-height: 68px;
+    padding: 8px 10px;
+  }
+
+  .song-heading small {
+    display: none;
+  }
+
+  .full-button {
+    display: none;
+  }
+
+  .transpose {
+    gap: 4px;
+  }
+
+  .transpose button {
+    width: 36px;
+    height: 40px;
+  }
+
+  .key-box {
+    min-width: 48px;
+    height: 40px;
+  }
+
+  .lyrics {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .lyrics-inner {
+    font-size: clamp(25px, 7vw, 38px);
+  }
+
+  .song-status {
+    top: 76px;
+    right: 10px;
+  }
+}
