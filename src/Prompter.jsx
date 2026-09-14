@@ -66,8 +66,8 @@ function isChordLine(line) {
   const trimmed = line.trim();
   if (!trimmed) return false;
 
-  const chordRegex =
-    /^[A-G](?:#|b)?(?:maj|min|sus|dim|aug|add|m)?\d*(?:\/[A-G](?:#|b)?)?$/i;
+ const chordRegex =
+  /^[A-G](?:#|b)?(?:maj|min|m|dim|aug)?\d*(?:sus[24]?|add\d+|[#b]\d+)*(?:\/[A-G](?:#|b)?)?$/i;
 
   const tokens = trimmed.split(/\s+/).filter(Boolean);
   return tokens.length > 0 && tokens.every((token) => chordRegex.test(token));
