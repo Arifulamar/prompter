@@ -40,7 +40,7 @@ function transposeNote(note, amount) {
 
 function transposeChord(chord, amount) {
   const match = chord.match(
-    /^([A-G](?:#|b)?)([^/\s]*)(?:\/([A-G](?:#|b)?))?$/
+    /^[A-G](?:#|b)?(?:maj|min|m|dim|aug)?\d*(?:sus[24]?|add\d+|[#b]\d+)*(?:\/[A-G](?:#|b)?)?$/
   );
 
   if (!match) return chord;
