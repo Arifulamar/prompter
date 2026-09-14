@@ -3,16 +3,16 @@ export const songs = [
     id: 1,
     title: "Aku Di Sini Untukmu",
     artist: "Dewa 19",
-    key: "E",
+    key: "C#m7",
     content: `
 [INTRO]
 
-C#m7 CMaj7  A7
+C#m7 CMaj7  A7Sus2
 
 
 [VERSE 1]
 
-C#m7                       CMaj7   A7 
+C#m7                       CMaj7   A7Sus2 
 Melayang kau cari-cari arti
 
 C#m7                       CMaj7   A7Sus2
