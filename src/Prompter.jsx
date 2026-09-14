@@ -39,8 +39,8 @@ function transposeNote(note, amount) {
 }
 
 function transposeChord(chord, amount) {
-  const match = chord.match(
-    /^[A-G](?:#|b)?(?:maj|min|m|dim|aug)?\d*(?:sus[24]?|add\d+|[#b]\d+)*(?:\/[A-G](?:#|b)?)?$/
+   const match = chord.match(
+    /^([A-G](?:#|b)?)([^/\s]*)(?:\/([A-G](?:#|b)?))?$/
   );
 
   if (!match) return chord;
@@ -86,7 +86,7 @@ export default function Prompter() {
 
   const song = songs[selectedIndex];
   const transposeAmount = transposeMap[song.id] || 0;
-  const currentKey = transposeNote(song.key, transposeAmount);
+  const currentKey = transposeChord (song.key, transposeAmount);
 
   const goHome = useCallback(() => {
     setPlaying(false);
